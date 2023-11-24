@@ -1,8 +1,8 @@
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+type TRootLayout = {
+  readonly children: React.ReactNode;
+};
+
+export default function RootLayout({ children }: TRootLayout) {
   return (
     <html lang="en">
       <body>{children}</body>
