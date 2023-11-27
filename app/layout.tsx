@@ -1,3 +1,5 @@
+import "@/app/ui/global.css";
+
 type TRootLayout = {
   readonly children: React.ReactNode;
 };
