@@ -28,7 +28,6 @@ export async function fetchRevenue() {
 
 export async function fetchLatestInvoices() {
   try {
-    console.log('Fetching latest invoices data...');
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     const data = await sql<LatestInvoiceRaw>`
@@ -37,8 +36,6 @@ export async function fetchLatestInvoices() {
       JOIN customers ON invoices.customer_id = customers.id
       ORDER BY invoices.date DESC
       LIMIT 5`;
-
-    console.log('Data fetch completed after 1 second.');
 
     const latestInvoices = data.rows.map((invoice) => ({
       ...invoice,
@@ -56,6 +53,9 @@ export async function fetchCardData() {
     // You can probably combine these into a single SQL query
     // However, we are intentionally splitting them to demonstrate
     // how to initialize multiple queries in parallel with JS.
+    
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
     const invoiceCountPromise = sql`SELECT COUNT(*) FROM invoices`;
     const customerCountPromise = sql`SELECT COUNT(*) FROM customers`;
     const invoiceStatusPromise = sql`SELECT
