@@ -54,3 +54,18 @@ export async function editInvoice(formData: FormData) {
   revalidatePath(`/dashboard/invoices/${id}/edit`);
   redirect('/dashboard/invoices');
 }
+
+export async function deleteInvoice(id: string) {
+  // TODO: Edit invoice -> delete invoice -> browser "prev page" button.
+  // It occures error bcs of the fetching by unexisting id (zombie children)
+  // clear browser history with id?
+  // redirect on unexisting fetch id?
+
+  await sql`
+    DELETE FROM invoices
+    WHERE id = ${id}
+  `;
+
+  revalidatePath('/dashboard/invoices');
+  revalidatePath(`/dashboard/invoices/${id}/edit`);
+}
