@@ -68,13 +68,6 @@ export async function editInvoice(formData: FormData) {
 }
 
 export async function deleteInvoice(id: string) {
-  // TODO: Edit invoice -> delete invoice -> browser "prev page" button.
-  // It occures error bcs of the fetching by unexisting id (zombie children)
-  // clear browser history with id?
-  // redirect on unexisting fetch id?
-
-  throw new Error('Failed to Delete Invoice');
-
   try {
     await sql`
       DELETE FROM invoices
