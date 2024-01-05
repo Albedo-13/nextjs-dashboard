@@ -1,5 +1,5 @@
 import SideNav from '@/app/ui/dashboard/sidenav';
- 
+
 type TLayout = {
   children: React.ReactNode;
 }
